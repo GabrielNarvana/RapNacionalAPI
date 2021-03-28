@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace RapNacionalAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[Modelcontroller]")]
     public class ModelController : ControllerBase
     {
         private readonly ILogger<ModelController> _logger;

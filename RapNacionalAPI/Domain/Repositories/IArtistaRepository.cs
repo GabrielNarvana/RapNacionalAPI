@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace RapNacionalAPI.Domain.Repositories
 {
-    public interface IAlbumRepository
+    public interface IArtistaRepository
     {
-        public List<dynamic> GetAll();
-        public int Insert(Album album);
+        public List<Artista> GetAll();
+        public Artista GetById(int Id);
+        public int Insert(Artista artista);
     }
 }
