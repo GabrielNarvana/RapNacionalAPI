@@ -1,5 +1,8 @@
 ﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using RapNacionalAPI.Domain.Models;
+using RapNacionalAPI.Infra;
+using RapNacionalAPI.Infra.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,30 +11,28 @@ using System.Threading.Tasks;
 
 namespace RapNacionalAPI.Domain.Repositories
 {
-    public class ArtistaRepository : IArtistaRepository
+    public class ArtistaRepository : DatabaseReaderFile, IArtistaRepository
     {
-        private readonly string _connectionString;
+        private readonly ISQLConnection _sqlConnection;
+        private readonly IConfiguration _configuration;
 
-        public ArtistaRepository(string ConnectionString)
+        public ArtistaRepository(ISQLConnection SqlConnection, IConfiguration configuration)
         {
-            _connectionString = ConnectionString;
+            _sqlConnection = SqlConnection;
+            _configuration = configuration;
         }
 
         public List<Artista> GetAll()
         {
-            using var connection = new SqlConnection(_connectionString);
-            var data = connection.Query("Select * from Albuns").ToList();
+            using SqlConnection connection = _sqlConnection.CreateCommand();
+            var query = Task.Run(() => ReadResource("GetAllAlbuns")).Result;
 
-            List<Artista> SendArtista = data.Select(x => new Artista 
-            { Nome = x.Nome, Id = x.Id }
-            ).ToList();
-
-            return SendArtista;
+            return null;
         }
 
         public Artista GetById(int Id)
         {
-            using var connection = new SqlConnection(_connectionString);
+            using SqlConnection connection = _sqlConnection.CreateCommand();
 
             var data = connection.Execute("Select * from Albuns where Id = @Id", Id);
 
@@ -45,7 +46,7 @@ namespace RapNacionalAPI.Domain.Repositories
 
         public int Insert(Artista artista)
         {
-            using var connection = new SqlConnection(_connectionString);
+            using SqlConnection connection = _sqlConnection.CreateCommand();
 
             var query = "insert into albuns (album) values (@album)";
 

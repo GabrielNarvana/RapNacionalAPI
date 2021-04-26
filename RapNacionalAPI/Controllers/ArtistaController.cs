@@ -12,12 +12,10 @@ namespace RapNacionalAPI.Controllers
     [ApiController]
     public class ArtistaController : ControllerBase
     {
-        private readonly ILogger<ArtistaController> _logger;
         private readonly IArtistaRepository _artistaRepository;
 
-        public ArtistaController(ILogger<ArtistaController> logger, IArtistaRepository artistaRepository)
+        public ArtistaController(IArtistaRepository artistaRepository)
         {
-            _logger = logger;
             _artistaRepository = artistaRepository;
             
         }
@@ -30,7 +28,7 @@ namespace RapNacionalAPI.Controllers
         }
 
         [HttpGet("artista/{Id}")]
-        public ActionResult<Artista> GetByID(int Id)
+        public ActionResult<Artista> GetByID([FromQuery] int Id)
         {
             var data = _artistaRepository.GetById(Id);
             return data;

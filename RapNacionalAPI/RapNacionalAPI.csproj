@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Repositories\Base\" />
+    <None Remove="Data\Queries\GetAllAlbuns.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Queries\GetAllAlbuns.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
