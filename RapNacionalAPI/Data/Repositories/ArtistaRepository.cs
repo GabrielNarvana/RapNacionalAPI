@@ -25,7 +25,7 @@ namespace RapNacionalAPI.Domain.Repositories
         public List<Artista> GetAll()
         {
             using SqlConnection connection = _sqlConnection.CreateCommand();
-            var query = Task.Run(() => ReadResource("GetAllAlbuns")).Result;
+            var query = Task.Run(() => ReadResource("GetAllArtistas")).Result;
 
             return null;
         }
@@ -33,26 +33,18 @@ namespace RapNacionalAPI.Domain.Repositories
         public Artista GetById(int Id)
         {
             using SqlConnection connection = _sqlConnection.CreateCommand();
+            var query = Task.Run(() => ReadResource("GetArtistasById")).Result;
 
-            var data = connection.Execute("Select * from Albuns where Id = @Id", Id);
-
-            Artista SendArtista = new Artista
-            { Nome = data.GetType().GetProperty("Nome").ToString(),
-                Id = Int32.Parse(data.GetType().GetProperty("Id").ToString())
-            };
-
-            return SendArtista;
+            return null;
         }
 
-        public int Insert(Artista artista)
+        public Artista Insert(Artista artista)
         {
             using SqlConnection connection = _sqlConnection.CreateCommand();
-
-            var query = "insert into albuns (album) values (@album)";
-
+            var query = Task.Run(() => ReadResource("GetArtistasById")).Result;
             var result = connection.Execute(query, new { artista = artista });
 
-            return result;
+            return null;
         }
     }
 }

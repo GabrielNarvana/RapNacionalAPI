@@ -10,6 +10,6 @@ namespace RapNacionalAPI.Domain.Repositories
     {
         public List<Artista> GetAll();
         public Artista GetById(int Id);
-        public int Insert(Artista artista);
+        public Artista Insert(Artista artista);
     }
 }

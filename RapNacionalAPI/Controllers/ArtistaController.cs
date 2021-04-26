@@ -5,6 +5,7 @@ using RapNacionalAPI.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace RapNacionalAPI.Controllers
@@ -32,6 +33,13 @@ namespace RapNacionalAPI.Controllers
         {
             var data = _artistaRepository.GetById(Id);
             return data;
+        }
+
+        [HttpPost("artista/{Id}")]
+        public ActionResult<Artista> Insert([FromBody] JsonElement Artista)
+        {
+            //var data = _artistaRepository.Insert(Artista);
+            return null;
         }
 
     }

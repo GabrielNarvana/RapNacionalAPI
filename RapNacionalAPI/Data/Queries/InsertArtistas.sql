@@ -1,0 +1,1 @@
+﻿Select * from Albuns where Id = @Id
