@@ -5,11 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\Queries\GetAllAlbuns.sql" />
+    <None Remove="Data\Queries\GetAllArtistas.sql" />
+    <None Remove="Data\Queries\GetArtistasById.sql" />
+    <None Remove="Data\Queries\InsertArtistas.sql" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Data\Queries\GetAllAlbuns.sql" />
+    <EmbeddedResource Include="Data\Queries\InsertArtistas.sql" />
+    <EmbeddedResource Include="Data\Queries\GetArtistasById.sql" />
+    <EmbeddedResource Include="Data\Queries\GetAllArtistas.sql" />
   </ItemGroup>
 
   <ItemGroup>

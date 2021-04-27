@@ -38,7 +38,8 @@ namespace RapNacionalAPI.Controllers
         [HttpPost("artista/{Id}")]
         public ActionResult<Artista> Insert([FromBody] JsonElement Artista)
         {
-            //var data = _artistaRepository.Insert(Artista);
+            Artista artista = new Artista();
+            var data = _artistaRepository.Insert(artista);
             return null;
         }
 
