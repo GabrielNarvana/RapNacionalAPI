@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using RapNacionalAPI.Domain.Models;
 using RapNacionalAPI.Domain.Repositories;
+using RapNacionalAPI.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace RapNacionalAPI.Controllers
         }
 
         [HttpPost("artista/{Id}")]
-        public ActionResult<Artista> Insert([FromBody] JsonElement Artista)
+        public ActionResult<Artista> Insert([FromBody] ArtistaDTO Artista)
         {
             Artista artista = new Artista();
             var data = _artistaRepository.Insert(artista);
