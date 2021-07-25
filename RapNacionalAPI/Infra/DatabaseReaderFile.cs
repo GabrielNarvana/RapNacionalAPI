@@ -13,7 +13,7 @@ namespace RapNacionalAPI.Infra
         {
             var assembly = Assembly.GetExecutingAssembly();
             string resourcePath = name;
-            var format = $"TrataCEP.API.Data.Queries.{name}.sql";
+            var format = $"{assembly.GetName().Name}.Data.Queries.{name}.sql";
             if (!name.StartsWith(nameof(format)))
             {
                 resourcePath = assembly.GetManifestResourceNames()
@@ -30,7 +30,7 @@ namespace RapNacionalAPI.Infra
         {
             var assembly = Assembly.GetExecutingAssembly();
             string resourcePath = name;
-            var format = $"RapNacionalAPI.Data.Queries.{name}.sql";
+            var format = $"{assembly.GetName().Name}.Data.Queries.{name}.sql";
             if (!name.StartsWith(nameof(format)))
             {
                 resourcePath = assembly.GetManifestResourceNames()
