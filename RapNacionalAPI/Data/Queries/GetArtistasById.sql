@@ -1,1 +1,0 @@
-﻿insert into albuns (album) values (@album)
