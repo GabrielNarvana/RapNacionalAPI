@@ -12,9 +12,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using RapNacionalAPI.Domain.Repositories;
-using RapNacionalAPI.Infra.Factories;
-using RapNacionalAPI.Infra.Interface;
 
 namespace RapNacionalAPI
 {
@@ -31,10 +28,7 @@ namespace RapNacionalAPI
             services.AddSingleton<IConfiguration>(_configuration);
             services.AddHttpClient();
 
-            services.AddSingleton<ISQLConnection>(s => new SQLConnectionFactory(_configuration.GetConnectionString("SQLServerConnection")));
-
             services.AddControllers();
-            services.AddSingleton<IArtistaRepository, ArtistaRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
