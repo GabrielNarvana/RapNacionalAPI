@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using RapNacionalAPI.Data.Models;
+using RapNacionalAPI.Data.Model;
 
 namespace RapNacionalAPI.Controllers
 {
