@@ -34,26 +34,26 @@ namespace RapNacionalAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Capa")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan>("Duracao")
+                    b.Property<TimeSpan?>("Duracao")
                         .HasColumnType("time");
 
                     b.Property<string>("Gravadora")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("Lancamento")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
@@ -73,9 +73,14 @@ namespace RapNacionalAPI.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Foto")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
@@ -107,11 +112,13 @@ namespace RapNacionalAPI.Migrations
                         .HasColumnType("time");
 
                     b.Property<string>("Gravadora")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
@@ -124,9 +131,11 @@ namespace RapNacionalAPI.Migrations
 
             modelBuilder.Entity("RapNacionalAPI.Data.Model.Album", b =>
                 {
-                    b.HasOne("RapNacionalAPI.Data.Model.Artista", null)
+                    b.HasOne("RapNacionalAPI.Data.Model.Artista", "Artista")
                         .WithMany("Albuns")
                         .HasForeignKey("ArtistaId");
+
+                    b.Navigation("Artista");
                 });
 
             modelBuilder.Entity("RapNacionalAPI.Data.Model.Musica", b =>
@@ -135,11 +144,13 @@ namespace RapNacionalAPI.Migrations
                         .WithMany("Faixas")
                         .HasForeignKey("AlbumId");
 
-                    b.HasOne("RapNacionalAPI.Data.Model.Artista", null)
+                    b.HasOne("RapNacionalAPI.Data.Model.Artista", "Artista")
                         .WithMany("Singles")
                         .HasForeignKey("ArtistaId");
 
                     b.Navigation("Album");
+
+                    b.Navigation("Artista");
                 });
 
             modelBuilder.Entity("RapNacionalAPI.Data.Model.Album", b =>

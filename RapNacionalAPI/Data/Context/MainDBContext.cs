@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using RapNacionalAPI.Data.Model;
+using System.Diagnostics;
 
 namespace RapNacionalAPI.Data.Context
 {
@@ -14,17 +15,5 @@ namespace RapNacionalAPI.Data.Context
         public DbSet<Artista> Artistas { get; set; }
         public DbSet<Musica> Musicas { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Album>(c =>
-            {
-                c.Property(p => p.Capa).HasMaxLength(1000);
-            });
-
-            modelBuilder.Entity<Musica>(c =>
-            {
-                c.Property(p => p.Capa).HasMaxLength(1000);
-            });
-        }
     }
 }
