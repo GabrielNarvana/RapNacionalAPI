@@ -12,7 +12,7 @@ using RapNacionalAPI.Data.Context;
 namespace RapNacionalAPI.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    [Migration("20230830001128_InitDB")]
+    [Migration("20230908184759_InitDB")]
     partial class InitDB
     {
         /// <inheritdoc />
@@ -43,8 +43,12 @@ namespace RapNacionalAPI.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan?>("Duracao")
-                        .HasColumnType("time");
+                    b.Property<DateTime?>("DataUltimaModificacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Duracao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gravadora")
                         .HasMaxLength(100)
@@ -74,6 +78,9 @@ namespace RapNacionalAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataUltimaModificacao")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Foto")
@@ -111,8 +118,12 @@ namespace RapNacionalAPI.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan>("Duracao")
-                        .HasColumnType("time");
+                    b.Property<DateTime?>("DataUltimaModificacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Duracao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gravadora")
                         .HasMaxLength(100)

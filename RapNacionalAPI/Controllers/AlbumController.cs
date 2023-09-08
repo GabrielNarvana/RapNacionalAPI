@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using RapNacionalAPI.Data.Model;
 using RapNacionalAPI.Data.UnitOfWorks;
 using RapNacionalAPI.Data.UnitOfWorks.Interfaces;
+using RapNacionalAPI.DTOs.Response;
+using RapNacionalAPI.Services.Interfaces;
 
 namespace RapNacionalAPI.Controllers
 {
@@ -9,18 +11,19 @@ namespace RapNacionalAPI.Controllers
     [Route("[controller]")]
     public class AlbumController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<AlbumController> _logger;
+        private readonly IAlbumService _albumService;
 
-        public AlbumController(IUnitOfWork unitOfWork, ILogger<AlbumController> logger)
+        public AlbumController(ILogger<AlbumController> logger, IAlbumService albumService)
         {
-            _unitOfWork = unitOfWork;
             _logger = logger;
+            _albumService = albumService;
         }
 
-        [HttpGet(Name = "artista/all")]
-        public Album GetAll()
+        [HttpGet(Name = "album/all")]
+        public IEnumerable<AlbumResponse> GetAll()
         {
+            return _albumService.GetAllAlbuns();
         }
     }
 }

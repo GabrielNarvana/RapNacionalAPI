@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RapNacionalAPI.Data.Model.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace RapNacionalAPI.Data.Model
 {
-    public class Artista
+    public class Artista : BaseEntity
     {
-        public int Id { get; set; }
 
         [MaxLength(150)]
         [Required]
@@ -14,9 +14,6 @@ namespace RapNacionalAPI.Data.Model
         public string? Foto { get; set; } = null;
         public List<Album>? Albuns { get; set; } = null;
         public List<Musica>? Singles { get; set; } = null;
-
-        [Required]
-        public DateTime DataCriacao { get; set; }
 
     }
 }

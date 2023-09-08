@@ -1,27 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RapNacionalAPI.Data.Model.Common;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RapNacionalAPI.Data.Model
 {
-    public class Musica
+    public class Musica : BaseEntity
     {
-        public int Id { get; set; }
-
         [MaxLength(150)]
         [Required]
         public string Nome { get; set; }
 
         [Required]
-        public TimeSpan Duracao { get; set; } = TimeSpan.Zero;
+        public string Duracao { get; set; } = "00:00";
 
         [MaxLength(100)]
         public string? Gravadora { get; set; } = null;
 
         [MaxLength(1000)]
         public string? Capa { get; set; } = null;
-
-        [Required]
-        public DateTime DataCriacao { get; set; }
 
         [ForeignKey("Album")]
         public int? AlbumId { get; set; } = null;
