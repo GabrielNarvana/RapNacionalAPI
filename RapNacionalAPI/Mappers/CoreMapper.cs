@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using RapNacionalAPI.Data.Model;
 
-namespace RapNacionalAPI.Mapper
+namespace RapNacionalAPI.Mappers
 {
     public class CoreMapper : Profile
     {
