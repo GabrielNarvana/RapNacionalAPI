@@ -15,14 +15,14 @@ namespace RapNacionalAPI.Data.UnitOfWorks
         {
             _context = context;
             Album = new AlbumRepository(_context);
-            Artista = new ArtistaRepository(_context);
-            Musica = new MusicaRepository(_context);
+            Artista = new GenericRepository<Artista>(_context);
+            Musica = new GenericRepository<Musica>(_context);
 
         }
 
         public IAlbumRepository Album { get; private set; }
-        public IArtistaRepository Artista { get; private set; }
-        public IMusicaRepository Musica { get; private set; }
+        public IGenericRepository<Artista> Artista { get; private set; }
+        public IGenericRepository<Musica> Musica { get; private set; }
 
         public int Complete()
         {

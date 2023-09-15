@@ -48,5 +48,17 @@ namespace RapNacionalAPI.Data.Repositories
         {
             _context.Set<T>().RemoveRange(entities);
         }
+
+        public IEnumerable<T> GetAllEagerLoading(params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return query.ToList();
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace RapNacionalAPI.Data.Repositories.Interfaces
         void AddRange(IEnumerable<T> entities);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
+        IEnumerable<T> GetAllEagerLoading(params Expression<Func<T, object>>[] includes);
+
     }
 }
